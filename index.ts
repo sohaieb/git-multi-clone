@@ -1,4 +1,3 @@
-import {$} from "bun"
 import {Command} from "commander"
 import {join, resolve} from 'path'
 import {cloneRepos, readJsonByPath} from "./src/utils/utils";
@@ -10,13 +9,13 @@ const program = new Command();
 program
     .name('gmc')
     .description('Utility to clone multiple Git repositories on the same directory')
-    .version('1.0.0');
+    .version('1.0.1');
 
 program
     .command('clone')
     .description('Clone Git repositories basing on "repositories.json" file')
     .option('--file, -f <string>', 'set a custom repositories json file path', join('.', 'repositories.json'))
-    .option('--target, -s <string>', 'set a custom target folder where repositories will be cloned', resolve('.', 'output'))
+    .option('--target, -t <string>', 'set a custom target folder where repositories will be cloned', resolve('.', 'output'))
     .action(async (options) => {
         const jsonFilePath = options.file;
         const targetFolderPath = options.target;
