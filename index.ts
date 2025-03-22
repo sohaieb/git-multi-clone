@@ -18,7 +18,7 @@ program
     .option('--target, -t <string>', 'set a custom target folder where repositories will be cloned', resolve('.', 'output'))
     .action(async (options) => {
         const jsonFilePath = options.file;
-        const targetFolderPath = options.target;
+        const targetFolderPath = resolve(options.target);
         if(!existsSync(targetFolderPath)){
           mkdirSync(targetFolderPath)
         }
